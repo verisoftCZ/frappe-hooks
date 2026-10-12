@@ -1,0 +1,193 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "creation": "2026-10-09 17:03:42.678702",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "requested_by",
+  "request_date",
+  "reason",
+  "contact_information",
+  "current_mobile_number",
+  "new_mobile_number",
+  "current_personal_email",
+  "new_personal_email",
+  "personal_information",
+  "current_date_of_birth",
+  "new_date_of_birth",
+  "address_section",
+  "current_address",
+  "new_address",
+  "applied_section",
+  "changes_applied",
+  "workflow_state"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "request_date",
+   "fieldtype": "Datetime",
+   "label": "Request Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason"
+  },
+  {
+   "fieldname": "contact_information",
+   "fieldtype": "Section Break",
+   "label": "Contact Information"
+  },
+  {
+   "fieldname": "current_mobile_number",
+   "fieldtype": "Data",
+   "label": "Current Mobile Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_mobile_number",
+   "fieldtype": "Data",
+   "label": "New Mobile Number"
+  },
+  {
+   "fieldname": "current_personal_email",
+   "fieldtype": "Data",
+   "label": "Current Personal Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_personal_email",
+   "fieldtype": "Data",
+   "label": "New Personal Email"
+  },
+  {
+   "fieldname": "personal_information",
+   "fieldtype": "Section Break",
+   "label": "Personal Information"
+  },
+  {
+   "fieldname": "current_date_of_birth",
+   "fieldtype": "Date",
+   "label": "Current Date of Birth",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_date_of_birth",
+   "fieldtype": "Date",
+   "label": "New Date of Birth"
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  },
+  {
+   "fieldname": "current_address",
+   "fieldtype": "Small Text",
+   "label": "Current Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "new_address",
+   "fieldtype": "Small Text",
+   "label": "New Address"
+  },
+  {
+   "fieldname": "applied_section",
+   "fieldtype": "Section Break",
+   "label": "Applied"
+  },
+  {
+   "default": "0",
+   "fieldname": "changes_applied",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Changes Applied",
+   "read_only": 1
+  },
+  {
+   "fieldname": "workflow_state",
+   "fieldtype": "Data",
+   "label": "Workflow State",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-12 17:43:34.261264",
+ "modified_by": "Administrator",
+ "module": "Verisoft HR",
+ "name": "Employee Data Change Request",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
