@@ -1,0 +1,13 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Employee Data Change Request",
+  "enabled": 1,
+  "modified": "2026-10-09 17:29:09.713965",
+  "module": null,
+  "name": "Employee Data Change Request Script",
+  "script": "frappe.ui.form.on('Employee Data Change Request', {\r\n    onload(frm) {\r\n        if (frm.is_new()) {\r\n            frm.set_value('requested_by', frappe.session.user);\r\n            frm.set_value('request_date', frappe.datetime.now_datetime());\r\n\r\n            frappe.db.get_value(\r\n                'Employee',\r\n                { user_id: frappe.session.user },\r\n                [\r\n                    'name',\r\n                    'cell_number',\r\n                    'personal_email',\r\n                    'date_of_birth',\r\n                    'current_address'\r\n                ]\r\n            ).then(r => {\r\n                if (!r.message || !r.message.name) {\r\n                    frappe.msgprint(\r\n                        'No Employee record is linked to the current user.'\r\n                    );\r\n                    return;\r\n                }\r\n\r\n                frm.set_value('employee', r.message.name);\r\n                frm.set_value('current_mobile_number', r.message.cell_number);\r\n                frm.set_value('current_personal_email', r.message.personal_email);\r\n                frm.set_value('current_date_of_birth', r.message.date_of_birth);\r\n                frm.set_value('current_address', r.message.current_address);\r\n            });\r\n        }\r\n    }\r\n});",
+  "view": "Form"
+ }
+]

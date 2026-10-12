@@ -279,3 +279,24 @@ doc_events = {
         "on_update": "verisoft_hr.employee_data_change_request.apply_approved_changes",
     }
 }
+
+fixtures = [
+    {
+        "dt": "Workflow",
+        "filters": [
+            ["document_type", "=", "Employee Data Change Request"]
+        ]
+    },
+    {
+        "dt": "Client Script",
+        "filters": [
+            ["dt", "=", "Employee Data Change Request"]
+        ]
+    },
+    {
+        "dt": "Workflow Action Master",
+        "filters": [
+            ["name", "=", "Submit Request"]
+        ]
+    }
+]
