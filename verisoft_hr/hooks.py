@@ -272,3 +272,10 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+doc_events = {
+    "Employee Data Change Request": {
+        "validate": "verisoft_hr.employee_data_change_request.validate_request",
+        "on_update": "verisoft_hr.employee_data_change_request.apply_approved_changes",
+    }
+}
