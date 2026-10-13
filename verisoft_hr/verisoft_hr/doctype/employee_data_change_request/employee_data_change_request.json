@@ -2,6 +2,7 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
+ "autoname": "format:EDCR-{YYYY}-{#####}",
  "creation": "2026-10-09 17:03:42.678702",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -135,10 +136,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-10-12 17:43:34.261264",
+ "modified": "2026-10-13 09:32:06.156280",
  "modified_by": "Administrator",
  "module": "Verisoft HR",
  "name": "Employee Data Change Request",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
