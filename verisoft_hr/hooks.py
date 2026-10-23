@@ -300,3 +300,8 @@ fixtures = [
         ]
     }
 ]
+
+override_whitelisted_methods = {
+    "hrms.hr.page.organizational_chart.organizational_chart.get_children":
+        "verisoft_hr.organizational_chart.get_children",
+}
