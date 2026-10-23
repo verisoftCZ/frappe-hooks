@@ -2,6 +2,17 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Leave Application",
+  "enabled": 1,
+  "modified": "2026-10-21 14:36:16.545047",
+  "module": null,
+  "name": "Leave Application - HR Only Leave Types",
+  "script": "\r\nfrappe.ui.form.on(\"Leave Application\", {\r\n    onload_post_render(frm) {\r\n        const is_hr =\r\n            frappe.session.user === \"Administrator\" ||\r\n            [\"HR User\", \"HR Manager\", \"System Manager\"]\r\n                .some(role => frappe.user.has_role(role));\r\n\r\n        if (is_hr) return;\r\n\r\n        const hr_only_types = [\r\n            \"Mateřská dovolená\",\r\n            \"Otcovská dovolená\",\r\n            \"Rodičovská dovolená\",\r\n            \"Překážka na straně zaměstnavatele\",\r\n            \"Jiná překážka\"\r\n        ];\r\n\r\n        const field = frm.fields_dict.leave_type;\r\n\r\n        const apply_filter = () => {\r\n            const original = field.get_query;\r\n\r\n            if (!original || original._verisoft_wrapped) {\r\n                return;\r\n            }\r\n\r\n            const wrapped = function() {\r\n                const result = original.call(this) || {};\r\n\r\n                return {\r\n                    ...result,\r\n                    filters: [\r\n                        ...(result.filters || []),\r\n                        [\r\n                            \"leave_type_name\",\r\n                            \"not in\",\r\n                            hr_only_types\r\n                        ]\r\n                    ]\r\n                };\r\n            };\r\n\r\n            wrapped._verisoft_wrapped = true;\r\n            field.get_query = wrapped;\r\n        };\r\n\r\n        // Apply filter whenever the user interacts with the field.\r\n        field.$input\r\n            .off(\".verisoft_leave\")\r\n            .on(\r\n                \"mousedown.verisoft_leave focusin.verisoft_leave\",\r\n                apply_filter\r\n            );\r\n\r\n        apply_filter();\r\n    }\r\n});\r\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Employee Data Change Request",
   "enabled": 1,
   "modified": "2026-10-09 17:29:09.713965",

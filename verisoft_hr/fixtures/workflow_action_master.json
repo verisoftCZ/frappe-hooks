@@ -2,8 +2,43 @@
  {
   "docstatus": 0,
   "doctype": "Workflow Action Master",
+  "modified": "2026-10-12 09:46:53.698357",
+  "name": "Review",
+  "workflow_action_name": "Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-10-21 12:28:29.843557",
+  "name": "Register",
+  "workflow_action_name": "Register"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-10-22 13:59:42.345480",
+  "name": "Submit & Approve",
+  "workflow_action_name": "Submit & Approve"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
   "modified": "2026-10-12 09:48:33.005224",
   "name": "Submit Request",
   "workflow_action_name": "Submit Request"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-10-02 14:33:27.049534",
+  "name": "Approve",
+  "workflow_action_name": "Approve"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-10-02 14:33:27.050909",
+  "name": "Reject",
+  "workflow_action_name": "Reject"
  }
 ]

@@ -284,21 +284,34 @@ fixtures = [
     {
         "dt": "Workflow",
         "filters": [
-            ["document_type", "=", "Employee Data Change Request"]
-        ]
+            ["name", "in", [
+                "Employee Data Change Request Approval",
+                "Employee leave request workflow",
+            ]]
+        ],
     },
     {
         "dt": "Client Script",
         "filters": [
-            ["dt", "=", "Employee Data Change Request"]
-        ]
+            ["name", "in", [
+                "Employee Data Change Request Script",
+                "Leave Application - HR Only Leave Types",
+            ]]
+        ],
     },
     {
         "dt": "Workflow Action Master",
         "filters": [
-            ["name", "=", "Submit Request"]
-        ]
-    }
+            ["name", "in", [
+                "Submit Request",
+                "Submit & Approve",
+                "Register",
+                "Review",
+                "Reject",
+                "Approve",
+            ]]
+        ],
+    },
 ]
 
 override_whitelisted_methods = {
