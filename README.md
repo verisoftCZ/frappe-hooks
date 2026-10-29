@@ -1,33 +1,43 @@
-### Verisoft HR
+# Verisoft HR
 
-Verisoft HR customizations
+Customizations for Frappe HRMS: employee data change requests, leave approval workflows, and an organization-chart API override.
 
-### Installation
+## Development
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+This repository contains the custom app only. Frappe, ERPNext, and HRMS are managed by a separate bench environment. Python >=3.14 is declared in `pyproject.toml`.
 
-```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch main
-bench install-app verisoft_hr
+Check JSON syntax and expected fixture record names with Node.js:
+
+```sh
+node scripts/check-fixtures.cjs
 ```
 
-### Contributing
+Formatting and lint hooks are configured in `.pre-commit-config.yaml`:
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
-
-```bash
-cd apps/verisoft_hr
+```sh
 pre-commit install
+pre-commit run --all-files
 ```
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+Integration tests require a disposable test site with the required apps installed:
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
+```sh
+bench --site <test-site> run-tests --app verisoft_hr
+```
 
-### License
+The existing DocType test is a scaffold without assertions; it does not establish business-rule coverage.
 
-mit
+## Installation
+
+From a prepared bench, install this app on the intended site:
+
+```sh
+bench get-app https://github.com/verisoftCZ/frappe-hooks --branch main
+bench --site <site> install-app verisoft_hr
+```
+
+Some workflow and permission configuration may also exist in the site database. Review the app hooks and fixture filters before exporting configuration.
+
+## License
+
+MIT
