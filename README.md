@@ -38,6 +38,22 @@ bench --site <site> install-app verisoft_hr
 
 Some workflow and permission configuration may also exist in the site database. Review the app hooks and fixture filters before exporting configuration.
 
+## Company-wide leave overview
+
+The custom Number Card `Company Employees on Leave Today` opens the Desk page
+`company-leave-today`. Both show unique active employees with approved, submitted
+leave covering today in the authorized company, without exposing leave types,
+reasons, private employee fields, or links to leave documents.
+
+System Users with Employee, HR User, HR Manager, or System Manager roles may use
+the overview. Employees are scoped to their active employment company. HR users
+without an active Employee record need a readable default Company. Multiple
+active employment companies require a matching default Company.
+
+After installing the updated app and migrating the target site, select this
+Number Card in the workspace editor. The app does not overwrite existing
+workspace layouts or change Employee / Leave Application document permissions.
+
 ## License
 
 MIT

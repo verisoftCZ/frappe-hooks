@@ -1,0 +1,17 @@
+[
+ {
+  "doctype": "Number Card",
+  "name": "Company Employees on Leave Today",
+  "label": "Nepřítomnosti dnes - všichni zaměstnanci",
+  "type": "Custom",
+  "document_type": "Leave Application",
+  "method": "verisoft_hr.company_leave_today.get_card",
+  "module": "Verisoft HR",
+  "is_public": 1,
+  "is_standard": 0,
+  "show_full_number": 1,
+  "show_percentage_stats": 0,
+  "filters_json": "[]",
+  "dynamic_filters_json": "[]"
+ }
+]

@@ -282,6 +282,10 @@ doc_events = {
 
 fixtures = [
     {
+        "dt": "Number Card",
+        "filters": [["name", "=", "Company Employees on Leave Today"]],
+    },
+    {
         "dt": "Workflow",
         "filters": [
             ["name", "in", [

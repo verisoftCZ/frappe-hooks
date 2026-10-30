@@ -15,6 +15,7 @@ function walk(dir) {
 }
 walk(root);
 const expected = {
+  number_card: ["Company Employees on Leave Today"],
   workflow: ["Employee Data Change Request Approval", "Employee leave request workflow"],
   client_script: ["Employee Data Change Request Script", "Leave Application - HR Only Leave Types"],
   workflow_action_master: ["Submit Request", "Submit & Approve", "Register", "Review", "Reject", "Approve"],

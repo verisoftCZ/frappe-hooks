@@ -1,0 +1,15 @@
+{
+ "doctype": "Page",
+ "module": "Verisoft HR",
+ "name": "company-leave-today",
+ "page_name": "company-leave-today",
+ "roles": [
+  {"role": "Employee"},
+  {"role": "HR User"},
+  {"role": "HR Manager"},
+  {"role": "System Manager"}
+ ],
+ "standard": "Yes",
+ "system_page": 0,
+ "title": "Nepřítomnosti dnes - všichni zaměstnanci"
+}
