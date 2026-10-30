@@ -54,6 +54,50 @@ After installing the updated app and migrating the target site, select this
 Number Card in the workspace editor. The app does not overwrite existing
 workspace layouts or change Employee / Leave Application document permissions.
 
+## HR celebration digest
+
+An optional combined birthday and work anniversary email runs daily at 07:00
+in the site's System Settings time zone. It includes active employees of one
+explicitly configured company. Birthdays omit age and original birth dates;
+anniversaries show completed years of service (at least one). February 29 is
+matched only in leap years. Empty days produce no email; missed past dates are
+not replayed. Delivery follows scheduler and email queue availability.
+
+After deploying and migrating, configure the `hr_celebration_digest` object in
+the private site configuration, using real values instead of these examples:
+
+```json
+{
+  "hr_celebration_digest": {
+    "enabled": false,
+    "company": "Example Company",
+    "recipient": "hr@example.com",
+    "sender": "notifications@example.com"
+  }
+}
+```
+
+The sender is optional if a default outgoing Email Account is enabled. An
+explicit sender is resolved using Frappe's standard outgoing-account selection,
+which can fall back to the default account. Enable only after checking that
+selection and the recipient. Do not store site configuration in Git. The task
+is disabled when the object or enabled flag is absent. Disable standard HRMS
+birthday/work anniversary reminders separately if only the HR digest is wanted.
+
+For a read-only operator preview (contains employee names), use:
+
+```sh
+bench --site <site> execute verisoft_hr.celebration_digest.preview --kwargs '{"company":"Example Company"}'
+```
+
+`HR Celebration Digest Log` is readable by HR Manager and System Manager. Its
+unique date/company key prevents duplicate queueing across concurrent runs and
+Email Queue cleanup. The queue ID is retained as text so mail cleanup does not
+remove the deduplication record. Failed deliveries must be retried in Email
+Queue; the log means queued, not delivered. Keep logs to preserve deduplication.
+Queue and log creation share one transaction. No Employee permissions change,
+and the preview is not exposed as an HTTP API.
+
 ## License
 
 MIT

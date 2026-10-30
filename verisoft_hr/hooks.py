@@ -165,6 +165,12 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
+scheduler_events = {
+    "cron": {
+        "0 7 * * *": ["verisoft_hr.celebration_digest.queue_daily_digest"],
+    }
+}
+
 # scheduler_events = {
 # 	"all": [
 # 		"verisoft_hr.tasks.all"
