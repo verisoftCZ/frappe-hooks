@@ -60,8 +60,18 @@ An optional combined birthday and work anniversary email runs daily at 07:00
 in the site's System Settings time zone. It includes active employees of one
 explicitly configured company. Birthdays omit age and original birth dates;
 anniversaries show completed years of service (at least one). February 29 is
-matched only in leap years. Empty days produce no email; missed past dates are
-not replayed. Delivery follows scheduler and email queue availability.
+matched only in leap years. Empty days produce no email; missed past dates
+are not replayed. Delivery follows scheduler and Email Queue availability.
+
+Recipients are enabled System Users explicitly assigned the `HR User` role,
+with read access to the configured Company and Employee.
+Each user's content is further limited by their Employee list/field permissions.
+An `HR Manager` or `System Manager` role alone does not qualify. The built-in
+`Administrator` is always excluded, even if assigned HR User. Each recipient gets
+a separate email to their User.email, containing only their permitted events.
+Recipient addresses are not shared via To/CC/BCC. No Notification Log is created.
+This scheduled business email is independent of users' in-app notification and
+notification-email preferences. An enabled outgoing Email Account is required.
 
 After deploying and migrating, configure the `hr_celebration_digest` object in
 the private site configuration, using real values instead of these examples:
@@ -71,32 +81,35 @@ the private site configuration, using real values instead of these examples:
   "hr_celebration_digest": {
     "enabled": false,
     "company": "Example Company",
-    "recipient": "hr@example.com",
     "sender": "notifications@example.com"
   }
 }
 ```
 
-The sender is optional if a default outgoing Email Account is enabled. An
-explicit sender is resolved using Frappe's standard outgoing-account selection,
-which can fall back to the default account. Enable only after checking that
-selection and the recipient. Do not store site configuration in Git. The task
-is disabled when the object or enabled flag is absent. Disable standard HRMS
-birthday/work anniversary reminders separately if only the HR digest is wanted.
+Do not store site configuration in Git. The task is disabled when the object or
+enabled flag is absent. The legacy fixed `recipient` key is ignored. The optional
+`sender` selects an enabled outgoing account by address, with Frappe's standard
+fallback to the default outgoing account. Without `sender`, a default outgoing
+account must be available. Disable standard HRMS birthday/work anniversary
+reminders separately if only this HR digest is wanted.
 
-For a read-only operator preview (contains employee names), use:
+For a read-only operator preview restricted to one recipient's Employee
+permissions (contains employee names), use:
 
 ```sh
-bench --site <site> execute verisoft_hr.celebration_digest.preview --kwargs '{"company":"Example Company"}'
+bench --site <site> execute verisoft_hr.celebration_digest.preview --kwargs '{"company":"Example Company","user":"hr@example.com"}'
 ```
 
 `HR Celebration Digest Log` is readable by HR Manager and System Manager. Its
-unique date/company key prevents duplicate queueing across concurrent runs and
-Email Queue cleanup. The queue ID is retained as text so mail cleanup does not
-remove the deduplication record. Failed deliveries must be retried in Email
-Queue; the log means queued, not delivered. Keep logs to preserve deduplication.
-Queue and log creation share one transaction. No Employee permissions change,
-and the preview is not exposed as an HTTP API.
+unique date/company key prevents duplicate runs, including after Email Queue
+cleanup. It stores the number and IDs of queued emails, without employee details.
+Keep logs to preserve deduplication. Newly assigned HR users do not receive a
+second run for an already completed day. All queues and the log share one
+transaction; a queue creation failure must roll back the whole run. The log means
+queued, not delivered; retry delivery failures through the original Email Queue
+records. Missing or invalid email addresses for recipients with events fail the
+run before any queue is created. No Employee permissions change, and the preview
+is not exposed as an HTTP API.
 
 ## License
 

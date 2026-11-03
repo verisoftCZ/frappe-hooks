@@ -5,11 +5,12 @@
  "engine": "InnoDB",
  "autoname": "hash",
  "allow_rename": 0,
- "field_order": ["digest_date", "company", "email_queue"],
+ "field_order": ["digest_date", "company", "emails_queued", "email_queue_ids"],
  "fields": [
   {"fieldname": "digest_date", "fieldtype": "Date", "label": "Digest Date", "read_only": 1, "reqd": 1, "in_list_view": 1},
   {"fieldname": "company", "fieldtype": "Link", "options": "Company", "label": "Company", "read_only": 1, "reqd": 1, "in_list_view": 1},
-  {"fieldname": "email_queue", "fieldtype": "Data", "label": "Email Queue ID", "read_only": 1}
+  {"fieldname": "emails_queued", "fieldtype": "Int", "label": "Emails Queued", "read_only": 1, "in_list_view": 1},
+  {"fieldname": "email_queue_ids", "fieldtype": "Text", "label": "Email Queue IDs", "read_only": 1}
  ],
  "permissions": [
   {"role": "System Manager", "read": 1, "report": 1},
