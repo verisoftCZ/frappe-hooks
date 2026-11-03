@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "SKOL-.####",
+ "creation": "2026-11-03 14:24:51.076752",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "povinn\u00e9_\u0161kolen\u00ed_zam\u011bstnance_section",
+  "zamestnanec",
+  "jmeno",
+  "typ_skoleni",
+  "datum_absolvovani",
+  "platnost_do",
+  "obnoveno",
+  "poznamka",
+  "priloha"
+ ],
+ "fields": [
+  {
+   "fieldname": "povinn\u00e9_\u0161kolen\u00ed_zam\u011bstnance_section",
+   "fieldtype": "Section Break",
+   "label": "Povinn\u00e9 \u0161kolen\u00ed zam\u011bstnance"
+  },
+  {
+   "fieldname": "zamestnanec",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Zam\u011bstnanec",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "zamestnanec.employee_name",
+   "fieldname": "jmeno",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Jm\u00e9no",
+   "read_only": 1
+  },
+  {
+   "fieldname": "typ_skoleni",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Typ \u0161kolen\u00ed",
+   "options": "BOZP\nPo\u017e\u00e1rn\u00ed ochrana\nSezn\u00e1men\u00ed s riziky (externist\u00e9)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "datum_absolvovani",
+   "fieldtype": "Date",
+   "label": "Datum absolvov\u00e1n\u00ed",
+   "reqd": 1
+  },
+  {
+   "fieldname": "platnost_do",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Platnost do"
+  },
+  {
+   "default": "0",
+   "description": "Za\u0161krtn\u011bte, kdy\u017e je \u0161kolen\u00ed nahrazeno nov\u00fdm z\u00e1znamem nebo zam\u011bstnanec ode\u0161el. Pak se p\u0159estanou pos\u00edlat upozorn\u011bn\u00ed.",
+   "fieldname": "obnoveno",
+   "fieldtype": "Check",
+   "label": "Obnoveno"
+  },
+  {
+   "fieldname": "poznamka",
+   "fieldtype": "Small Text",
+   "label": "Pozn\u00e1mka"
+  },
+  {
+   "fieldname": "priloha",
+   "fieldtype": "Attach",
+   "label": "P\u0159\u00edloha"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-11-03 15:20:41.927135",
+ "modified_by": "Administrator",
+ "module": "Verisoft HR",
+ "name": "Employee mandatory trainings",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

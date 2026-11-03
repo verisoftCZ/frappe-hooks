@@ -288,6 +288,17 @@ doc_events = {
 
 fixtures = [
     {
+        "dt": "Notification",
+        "filters": [["name", "in", [
+            "Školení – brzy končí platnost",
+            "Školení – platnost skončila",
+        ]]],
+    },
+    {
+        "dt": "Report",
+        "filters": [["name", "=", "Školení – přehled platnosti"]],
+    },
+    {
         "dt": "Number Card",
         "filters": [["name", "=", "Company Employees on Leave Today"]],
     },

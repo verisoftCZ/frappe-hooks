@@ -111,6 +111,24 @@ records. Missing or invalid email addresses for recipients with events fail the
 run before any queue is created. No Employee permissions change, and the preview
 is not exposed as an HTTP API.
 
+## Mandatory employee trainings
+
+`Employee mandatory trainings` belongs to the Verisoft HR module. Its existing
+name, field names, `SKOL-.####` naming series and HR permissions are preserved.
+Before migrating a site with the original custom DocType, back it up and compare
+its definition with this version. Schema sync converts the same-named definition
+to this app's standard DocType; employee training records remain site data.
+
+Filtered fixtures carry the Report Builder `Školení – přehled platnosti` and
+the two Notification rules `Školení – brzy končí platnost` and
+`Školení – platnost skončila`. They retain their original behavior: in-app Alerts
+to HR User, 30 days before expiry and on the expiry date, excluding renewed and
+external-worker trainings. No additional scheduler hook or Server Script is used.
+The report excludes renewed/external trainings and retains its site-specific
+`Company Letterhead - Grey` reference; provision or configure that letterhead
+separately when installing on another site. Letterhead content and training data
+are not exported by this app.
+
 ## License
 
 MIT

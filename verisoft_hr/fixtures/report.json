@@ -1,0 +1,41 @@
+[
+ {
+  "add_total_row": 0,
+  "add_translate_data": 0,
+  "columns": [],
+  "disable_prepared_report_automation": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "doctype_to_sync": [],
+  "documentation_url": null,
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": "{\"filters\":[[\"Employee mandatory trainings\",\"obnoveno\",\"=\",0],[\"Employee mandatory trainings\",\"typ_skoleni\",\"!=\",\"Seznámení s riziky (externisté)\"]],\"fields\":[[\"name\",\"Employee mandatory trainings\"],[\"docstatus\",\"Employee mandatory trainings\"],[\"zamestnanec\",\"Employee mandatory trainings\"],[\"jmeno\",\"Employee mandatory trainings\"],[\"typ_skoleni\",\"Employee mandatory trainings\"],[\"platnost_do\",\"Employee mandatory trainings\"]],\"order_by\":\"`tabEmployee mandatory trainings`.`creation` desc\",\"add_totals_row\":0,\"page_length\":500,\"column_widths\":{\"name\":120,\"zamestnanec\":120,\"jmeno\":120,\"typ_skoleni\":120,\"platnost_do\":120},\"group_by\":null}",
+  "letter_head": "Company Letterhead - Grey",
+  "modified": "2026-11-03 16:10:28.233635",
+  "module": "Verisoft HR",
+  "name": "Školení – přehled platnosti",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Employee mandatory trainings",
+  "reference_report": null,
+  "report_name": "Školení – přehled platnosti",
+  "report_script": null,
+  "report_type": "Report Builder",
+  "roles": [
+   {
+    "role": "System Manager"
+   },
+   {
+    "role": "HR Manager"
+   },
+   {
+    "role": "HR User"
+   }
+  ],
+  "snapshot_report": 0,
+  "timeout": 0
+ }
+]

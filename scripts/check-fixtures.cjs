@@ -15,6 +15,8 @@ function walk(dir) {
 }
 walk(root);
 const expected = {
+  notification: ["Školení – brzy končí platnost", "Školení – platnost skončila"],
+  report: ["Školení – přehled platnosti"],
   number_card: ["Company Employees on Leave Today"],
   workflow: ["Employee Data Change Request Approval", "Employee leave request workflow"],
   client_script: ["Employee Data Change Request Script", "Leave Application - HR Only Leave Types"],
