@@ -53,6 +53,7 @@ app_license = "mit"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {"Employee": "public/js/employee_bank_access.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_kanban_js = {"doctype" : "public/js/doctype_kanban.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -97,6 +98,8 @@ app_license = "mit"
 
 # before_install = "verisoft_hr.install.before_install"
 # after_install = "verisoft_hr.install.after_install"
+after_install = "verisoft_hr.employee_bank_access.setup_bank_access"
+after_migrate = "verisoft_hr.employee_bank_access.setup_bank_access"
 
 # Uninstallation
 # ------------
@@ -201,6 +204,9 @@ scheduler_events = {
 # extend_doctype_class = {
 # 	"Task": "verisoft_hr.custom.task.CustomTaskMixin"
 # }
+extend_doctype_class = {
+    "Employee": ["verisoft_hr.employee_bank_access.EmployeeBankAccessMixin"],
+}
 
 # Overriding Methods
 # ------------------------------

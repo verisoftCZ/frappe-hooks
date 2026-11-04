@@ -38,6 +38,29 @@ bench --site <site> install-app verisoft_hr
 
 Some workflow and permission configuration may also exist in the site database. Review the app hooks and fixture filters before exporting configuration.
 
+## Employee data change requests
+
+Requests support mobile number, personal email, date of birth, current address,
+permanent address and bank account number. Changes are applied to Employee only
+after workflow approval, once per request. Blank new values leave existing data
+unchanged. The existing `current_address`/`new_address` request field names are
+retained; the latter updates `Employee.current_address`.
+
+The Client Script fixture loads permission-checked defaults through
+`get_request_defaults`. Ordinary employees can load only their own defaults.
+Current/new bank account fields on requests use a separate level 1: self access
+is document-specific, and the existing HR User/HR Manager approver roles can
+read/write them. Being a line manager, request reader or share recipient does
+not expose someone else's bank fields. Static Employee list/export permissions
+do not include those fields. Existing requests cannot be reassigned to oneself
+by a non-HR editor. Deploy the schema, controller, Python hooks and Client Script
+fixture together; no workflow transitions are changed.
+
+Czech labels missing from upstream catalogs are provided in
+`verisoft_hr/translations/cs.csv`, together with the request/DocType titles.
+Source labels remain English. Site-level Translation records take precedence
+over app translations; clear the translation/site cache after changing the file.
+
 ## Company-wide leave overview
 
 The custom Number Card `Company Employees on Leave Today` opens the Desk page
@@ -128,6 +151,34 @@ The report excludes renewed/external trainings and retains its site-specific
 `Company Letterhead - Grey` reference; provision or configure that letterhead
 separately when installing on another site. Letterhead content and training data
 are not exported by this app.
+
+## Employee bank details
+
+`employee_bank_access.py` extends Employee through `extend_doctype_class`.
+Salary Mode, Bank Name, Bank Account No and IBAN use a dedicated permission
+level 2. An Employee can read these fields on their own saved profile, identified
+by the stored `Employee.user_id`; being the document creator or a manager does
+not grant access. This does not grant document access or employee write access.
+HR User retains read/write access on all Employee documents allowed by their
+normal document/User Permissions. Administrator retains framework access.
+CTC and Salary Currency permissions are unchanged.
+
+After-install/migrate setup applies only the four Property Setters and the HR
+User level-2 permission, preserving other permission rows. It refuses a site
+already using level 2 for unrelated fields or other roles. Deploy the controller,
+hooks and form script together, then migrate with maintenance enabled. No UI
+Server Script or manual fixture export is needed for this feature.
+
+Ordinary Employee list queries, reports and exports do not gain bank fields,
+even for their own row: self access is deliberately limited to document detail
+APIs and its form. The form mirrors server-provided per-document flags without
+granting static Employee permissions. Custom reports/endpoints/templates which
+bypass Frappe's standard permission checks must enforce equivalent restrictions.
+
+Before deployment, test own/subordinate/HR reads, writes, list/export restrictions
+and repeat migrations on a disposable site. Reverting only the application image
+leaves the level-2 metadata in the database; restore the previous four permlevels
+and remove only the new HR User level-2 row as part of a reviewed rollback.
 
 ## License
 
